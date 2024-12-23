@@ -2,6 +2,10 @@ package com.usmp.eventusmp.persistence.models;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
+
+import org.hibernate.annotations.UuidGenerator;
+import org.hibernate.annotations.UuidGenerator.Style;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -23,8 +27,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Usuarios {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @UuidGenerator(style = Style.RANDOM)
+    private UUID id;
     @Column(unique = true, nullable = false)
     private String nombre;
 
