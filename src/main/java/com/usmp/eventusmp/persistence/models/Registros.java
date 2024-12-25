@@ -5,31 +5,33 @@ import java.util.UUID;
 import org.hibernate.annotations.UuidGenerator;
 import org.hibernate.annotations.UuidGenerator.Style;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Builder
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Categorias {
+public class Registros {
     @Id
-   // con version 5 de hibernate @UuidGenerator(style = Style.RANDOM)
-   @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(nullable = false, unique = true)
-    @Enumerated(EnumType.STRING)
-    private CategoriasEnum nombre;
+    @ManyToOne
+    @JoinColumn(name = "evento_id")
+    private Eventos evento;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuarios usuario;
 
 }

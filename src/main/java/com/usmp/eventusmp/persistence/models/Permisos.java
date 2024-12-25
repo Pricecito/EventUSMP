@@ -15,6 +15,8 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Permisos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +25,5 @@ public class Permisos {
     @Column(nullable = false, unique = true)
     @Enumerated(EnumType.STRING)
     private PermisosEnum nombre;
+    
 }

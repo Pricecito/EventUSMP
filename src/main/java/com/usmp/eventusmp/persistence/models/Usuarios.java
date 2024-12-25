@@ -25,9 +25,11 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Usuarios {
     @Id
-    @UuidGenerator(style = Style.RANDOM)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     @Column(unique = true, nullable = false)
     private String nombre;
@@ -40,5 +42,5 @@ public class Usuarios {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))
-    private Set<Permisos> roles = new HashSet<>();
+    private Set<Roles> roles = new HashSet<>();
 }
