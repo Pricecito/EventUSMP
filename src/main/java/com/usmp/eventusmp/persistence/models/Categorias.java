@@ -24,12 +24,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Categorias {
     @Id
-   // con version 5 de hibernate @UuidGenerator(style = Style.RANDOM)
-   @GeneratedValue(strategy = GenerationType.UUID)
+    // con version 5 de hibernate @UuidGenerator(style = Style.RANDOM)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(nullable = false, unique = true)
     @Enumerated(EnumType.STRING)
-    private CategoriasEnum nombre;
+    private CategoriasEnum categoriasEnum;
 
 }

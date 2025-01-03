@@ -25,6 +25,8 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Roles {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,9 +34,11 @@ public class Roles {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private RoleEnum nombre;
+    private RoleEnum rolesEnum;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "roles_permisos", joinColumns = @JoinColumn(name = "role_id"), inverseJoinColumns = @JoinColumn(name = "permiso_id"))
-    private Set<Permisos> permisos = new HashSet<>();
+    private Set<Permisos> permisosList = new HashSet<>();
+
+    
 }

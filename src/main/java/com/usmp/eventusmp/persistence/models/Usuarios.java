@@ -3,10 +3,6 @@ package com.usmp.eventusmp.persistence.models;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
-
-import org.hibernate.annotations.UuidGenerator;
-import org.hibernate.annotations.UuidGenerator.Style;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,11 +30,20 @@ public class Usuarios {
     @Column(unique = true, nullable = false)
     private String nombre;
 
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false)
     private String email;
-
-    @Column(nullable = false)
     private String contrasena;
+
+    @Column(name = "is_Enabled")
+    private boolean isEnabled;
+    @Column(name = "account_no_expired")
+    private boolean accountNoExpired;
+
+    @Column(name = "account_No_locked")
+    private boolean accountNoLocked;
+
+    @Column(name = "credential_No_expired")
+    private boolean credentialNoExpired;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))

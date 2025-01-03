@@ -24,6 +24,6 @@ public class Permisos {
 
     @Column(nullable = false, unique = true)
     @Enumerated(EnumType.STRING)
-    private PermisosEnum nombre;
-    
+    private PermisosEnum permisosEnum;
+
 }
