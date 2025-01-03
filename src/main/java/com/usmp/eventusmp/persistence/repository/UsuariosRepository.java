@@ -10,5 +10,5 @@ import com.usmp.eventusmp.persistence.models.Usuarios;
 
 @Repository
 public interface UsuariosRepository extends JpaRepository<Usuarios, UUID> {
-    Optional<Usuarios> findUsuariosByNombre(String nombre);
+    Optional<Usuarios> findUsuariosByEmail(String correo);
 }

@@ -20,11 +20,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         @Autowired
         private UsuariosRepository usuariosRepository;
 
-        public UserDetails loadUserByUsername(String nombre) throws UsernameNotFoundException {
-                Usuarios usuario = usuariosRepository.findUsuariosByNombre(
-                                nombre)
+        public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+                Usuarios usuario = usuariosRepository.findUsuariosByEmail(
+                                email)
                                 .orElseThrow(() -> new UsernameNotFoundException(
-                                                "Usuario " + nombre + " no encontrado"));
+                                                "Usuario " + email + " no encontrado"));
 
                 List<SimpleGrantedAuthority> authorities = new ArrayList<>();
 
